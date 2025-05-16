@@ -31,8 +31,7 @@ class HashMap {
 
     oldBuckets.forEach((el) => {
       const [key, value] = el;
-      const hashCode = this.hash(key);
-      const bucketIndex = hashCode % this.capacity;
+      const bucketIndex = this.hash(key) % this.capacity;
       this.buckets[bucketIndex].append(key, value);
     });
   }
@@ -45,8 +44,7 @@ class HashMap {
       this.resize();
     }
 
-    const hashCode = this.hash(key);
-    const bucketIndex = hashCode % this.capacity;
+    const bucketIndex = this.hash(key) % this.capacity;
     const node = this.buckets[bucketIndex].getItem(key);
 
     if (node) {
@@ -57,8 +55,7 @@ class HashMap {
   }
 
   get(key) {
-    const hashCode = this.hash(key);
-    const bucketIndex = hashCode % this.capacity;
+    const bucketIndex = this.hash(key) % this.capacity;
     const node = this.buckets[bucketIndex].getItem(key);
 
     if (node) {
@@ -69,8 +66,7 @@ class HashMap {
   }
 
   remove(key) {
-    const hashCode = this.hash(key);
-    const bucketIndex = hashCode % this.capacity;
+    const bucketIndex = this.hash(key) % this.capacity;
     const node = this.buckets[bucketIndex].getItem(key);
 
     if (node) {
